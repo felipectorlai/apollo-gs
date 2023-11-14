@@ -1,0 +1,11 @@
+@mixin mobile{
+    @content;
+}
+
+@mixin tablet{
+    @content;
+}
+
+@mixin desktop{
+    @content;
+}

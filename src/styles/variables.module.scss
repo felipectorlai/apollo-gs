@@ -1,0 +1,11 @@
+@import 'mixins';
+
+// ModeLight
+$colorText: #000;
+
+// ModeDark
+$colorTextDark: #fff;
+
+@include mobile(){
+
+}
