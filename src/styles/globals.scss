@@ -1,0 +1,15 @@
+// main.scss
+@use 'themes/themeDark' as themeDark;
+@use 'themes/themeLight' as themeLight;
+
+// Definindo o tema padrão
+$theme: themeDark;
+
+// Estilos globais
+body {
+  @if $theme == themeDark {
+    @include themeDark.use-theme();
+  } @else {
+    @include themeLight.use-theme();
+  }
+}

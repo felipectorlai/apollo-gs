@@ -1,11 +1,9 @@
 'use client'
 import { useState } from 'react';
-import style from '../../styles/Components/header.module.scss';
-import { IoMdMenu } from "react-icons/io";
+import style from '../styles/components/header.module.scss';
+import { IoMdMenu, IoMdHelpCircleOutline, IoIosSettings } from "react-icons/io";
 import { IoHome } from "react-icons/io5";
-import { IoMdHelpCircleOutline } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
-import { IoIosSettings } from "react-icons/io";
 import { ImExit } from "react-icons/im";
 
 

@@ -1,0 +1,169 @@
+@import '../variables.scss';
+
+.navStyle{
+    display: none !important;
+}
+
+.container {
+    height: 95vh;
+    width: 100%;
+
+    .label {
+        margin-bottom: 68px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: min-content min-content;
+        background: $bgLabel;
+        position: relative;
+        font-size: 0.65rem;
+        transition: all 0.3s ease-out;
+
+        & > .labelTitle {
+            border: 1px solid $color-light;
+            color: $color-light;
+            box-shadow: 0 2px 2px rgba(120, 120, 120, 0.25);
+            padding: 0.25em 0.5em;
+            background-color: $bgInput;
+            grid-column: 1/span 1;
+            grid-row: 1/span 1;
+            position: relative;
+            border-radius: 4px;
+            translate: 10px -10px;
+            transition: all 0.5s ease-out 0.5s;
+            z-index: 10;
+        }
+
+        &:focus .input,
+        &:focus-within .input {
+            background-color: $bgInput;
+            padding: 1em;
+            color: $color-light;
+            border: 2px solid $color-light;
+            outline: 2px solid $color-light;
+            outline-offset: -2px;
+            border-radius: 12px;
+            box-shadow: 0 5px 10px rgba(98, 0, 255, 0.25), 0 -5px 20px rgba(98, 0, 255, 0.1);
+            scale: 1.15;
+            transition: all 0.5s cubic-bezier(0, 1.46, 1, 1.62) 0.3s;
+        }
+
+        &:focus,
+        &:focus-within .labelTitle {
+            translate: 10px -20px;
+            border-radius: 4px 4px 0 0;
+            z-index: 0;
+            transition: all 0.3s cubic-bezier(0, 1.46, 1, 1.62);
+        }
+
+        .input {
+            appearance: none;
+            border-top: 2px solid transparent;
+            border-right: 2px solid transparent;
+            border-bottom: 2px solid $color-light;
+            border-left: 2px solid transparent;
+            background-color: $bgInput;
+            caret-color: $color-light;
+            min-width: 200px;
+            padding: 1.25em 1em 0.25em;
+            outline: 0px solid $color-light;
+            grid-column: 1/-1;
+            grid-row: 1 / -1;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.5, 0.6, 0.5, 0.62);
+            z-index: 0;
+
+            &,
+            &::placeholder {
+                color: $color-light-a;
+            }
+        }
+    }
+
+    .butttonSumit {
+        position: relative;
+        padding: 10px 22px;
+        border-radius: 6px;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        background-color: #7d2ae8;
+        transition: all 0.2s ease;
+
+        &:active {
+            transform: scale(0.96);
+        }
+
+        &:before,
+        &:after {
+            position: absolute;
+            content: "";
+            width: 150%;
+            left: 50%;
+            height: 100%;
+            transform: translateX(-50%);
+            z-index: -1000;
+            background-repeat: no-repeat;
+        }
+
+        &:hover:before {
+            top: -70%;
+            background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+            radial-gradient(circle, transparent 20%, #7d2ae8 20%, transparent 30%),
+            radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+            radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+            radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+            radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+            radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+            radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+            radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+            background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+            10% 10%, 18% 18%;
+            background-position: 50% 120%;
+            animation: greentopBubbles 0.6s ease;
+        }
+
+        @keyframes greentopBubbles {
+            0% {
+                background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+            }
+
+            50% {
+                background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+            }
+
+            100% {
+                background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+                background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+            }
+        }
+
+        &:hover::after {
+            bottom: -70%;
+            background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+            radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+            radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+            radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+            radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+            radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+            radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+            background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+            background-position: 50% 0%;
+            animation: greenbottomBubbles 0.6s ease;
+        }
+
+        @keyframes greenbottomBubbles {
+            0% {
+                background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+            }
+
+            50% {
+                background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+            }
+
+            100% {
+                background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+                background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+            }
+        }
+    }
+}
