@@ -1,6 +1,13 @@
 'use client'
 import { useState } from 'react';
 import style from '../../styles/Components/header.module.scss';
+import { IoMdMenu } from "react-icons/io";
+import { IoHome } from "react-icons/io5";
+import { IoMdHelpCircleOutline } from "react-icons/io";
+import { CgProfile } from "react-icons/cg";
+import { IoIosSettings } from "react-icons/io";
+import { ImExit } from "react-icons/im";
+
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -18,9 +25,8 @@ const Header = () => {
           data-bs-target="#offcanvasNavbar"
           aria-controls="offcanvasNavbar"
           onClick={toggleMenu}
-          style={{color: 'black'}}
         >
-          <span className="navbar-toggler-icon">-</span>
+          <IoMdMenu />
         </button>
   
         <div
@@ -45,13 +51,37 @@ const Header = () => {
             {/* Aqui você pode adicionar links ou qualquer conteúdo do menu */}
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a href="#" className="nav-link">
-                  Página 1
+                <a href="#" className="nav-link" style={{color: 'blue'}}>
+                  <IoHome className={style.icon}/>
+                  Home
                 </a>
               </li>
+              <br></br>
               <li className="nav-item">
-                <a href="#" className="nav-link">
-                  Página 2
+                <a href="#" className="nav-link" style={{color: 'blue'}}>
+                  <CgProfile className={style.icon}/>
+                  Perfil
+                </a>
+              </li>
+              <br></br>
+              <li className="nav-item">
+                <a href="#" className="nav-link" style={{color: 'blue'}}>
+                  <IoIosSettings className={style.icon}/>
+                  Configurações
+                </a>
+              </li>
+              <br></br>
+              <li className="nav-item">
+                <a href="#" className="nav-link" style={{color: 'blue'}}>
+                  <IoMdHelpCircleOutline  className={style.icon}/>
+                  Ajuda
+                </a>
+              </li>
+              <br></br>
+              <li className="nav-item">
+                <a href="#" className="nav-link" style={{color: 'blue'}}>
+                  <ImExit  className={style.icon}/>
+                  Sair
                 </a>
               </li>
               {/* Adicione mais itens do menu conforme necessário */}
