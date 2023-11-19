@@ -13,19 +13,22 @@ export default function Account() {
   const handleCpfChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newCnpj = event.target.value.replace(/\D/g, '');
 
-    if (newCnpj.length <= 11) {
+    if (newCnpj.length <= 14) {
       setCnpj(newCnpj);
-      setIsButtonActive(newCnpj.length === 11);
+      setIsButtonActive(newCnpj.length === 14);
     } 
 };
 
   const handleFormSubmit = async () => {
-    if (cnpj.length === 11) {
+    if (cnpj.length === 14) {
       try {
         const response = await axios.get(`http://localhost:8080/client/cnpj/${cnpj}`);
         if (response.data && Object.keys(response.data).length > 0) {
           console.log(response.data);
-          router.push('/');
+          console.log(response.data.id);
+          console.log(response.data.situation);
+
+          //router.push('/');
         } else {
           router.push('/');
         }
@@ -33,7 +36,7 @@ export default function Account() {
         console.error('Erro ao chamar a API:', err);
       }
     } else {
-      alert('Por favor, insira um CNPJ válido com 11 dígitos.');
+      alert('Por favor, insira um CNPJ válido com 14 dígitos.');
     }
   };
 
