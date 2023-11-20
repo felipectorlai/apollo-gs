@@ -1,7 +1,16 @@
 .navStyle{
-    background-color: #000;
+    background-color: #212529;
     color: #fff;
     width: 100%;
+    padding-top: 50px;
+
+    .linkStyle:hover{
+        background: #afaffd;
+        transform: scale(1.5) rotate(360deg);
+        cursor: grab;
+        border: 10px solid #afaffd;
+        border-radius: 10px;
+    }
 
     .icon{
         margin-right: 16px;

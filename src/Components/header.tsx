@@ -49,35 +49,35 @@ const Header = () => {
             {/* Aqui você pode adicionar links ou qualquer conteúdo do menu */}
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a href="#" className="nav-link" style={{color: 'blue'}}>
+                <a href="#" style={{color: 'blue'}} className={`${style.linkStyle} nav-Link`}>
                   <IoHome className={style.icon}/>
                   Home
                 </a>
               </li>
               <br></br>
               <li className="nav-item">
-                <a href="#" className="nav-link" style={{color: 'blue'}}>
+              <a href="#" style={{color: 'blue'}} className={`${style.linkStyle} nav-Link`}>
                   <CgProfile className={style.icon}/>
                   Perfil
                 </a>
               </li>
               <br></br>
               <li className="nav-item">
-                <a href="#" className="nav-link" style={{color: 'blue'}}>
+              <a href="#" style={{color: 'blue'}} className={`${style.linkStyle} nav-Link`}>
                   <IoIosSettings className={style.icon}/>
                   Configurações
                 </a>
               </li>
               <br></br>
               <li className="nav-item">
-                <a href="#" className="nav-link" style={{color: 'blue'}}>
+              <a href="#" style={{color: 'blue'}} className={`${style.linkStyle} nav-Link`}>
                   <IoMdHelpCircleOutline  className={style.icon}/>
                   Ajuda
                 </a>
               </li>
               <br></br>
               <li className="nav-item">
-                <a href="#" className="nav-link" style={{color: 'blue'}}>
+              <a href="#" style={{color: 'blue'}} className={`${style.linkStyle} nav-Link`}>
                   <ImExit  className={style.icon}/>
                   Sair
                 </a>
