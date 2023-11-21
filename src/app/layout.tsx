@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Header from '@/Components/header'
 import '../styles/globals.scss'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ToggleMode from '@/Components/ToggleMode';
 
 export default function RootLayout({
