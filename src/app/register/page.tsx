@@ -1,7 +1,7 @@
-"use client";
+"use client"
 import axios from "axios";
 import React, { useState, ChangeEvent } from "react";
-import style from "@/styles/Components/register.modulo.scss";
+import style from "@/styles/Components/register.module.scss";
 
 export default function Page() {
   // #region const register client
@@ -89,171 +89,76 @@ export default function Page() {
     } catch (error) {
       console.error("Error submitting form:", error);
     }
-  };
+  };  
 
   return (
     <div className={style.Rselector} >
-      <DivIconHome style={{ height: "8%" }}>
-        <IconPorto src="img/logo-portoseguro-blue.svg" alt="Logo" />
-      </DivIconHome>
+      <div className={style.Form} onSubmit={handleSubmit}>
+        <div className={`${style.FormGroup} wave-group`} style={{ marginTop: 0 }}>
+          <input required type="text" className={`${style.FormField} input`} value={nameCorporateReason} onChange={(e: React.FormEvent) => setNameCorporateReason(e.target.value)} />
+          <span className={`${style.FormSpanBar} bar`}></span>
+          <label className={`${style.FormLabel} label`}>
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 0 }}> N </label>
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 1 }}> o </label>
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 2 }}> m </label> 
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 3 }}> e </label>
+          </label>
+        </div>
 
-      <Form onSubmit={handleSubmit}>
-        <FormGroup className="wave-group" style={{ marginTop: 0 }}>
-          <FormField
-            required
-            type="text"
-            className="input"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+        <div className={`${style.FormGroup} wave-group`}>
+          <FormField required type="text" className="input" value={cpf}  onChange={handleCpfChange} />
           <FormSpanBar className="bar"></FormSpanBar>
           <FormLabel className="label">
-            <FormSpanChar className="label-char" style={{ "--index": 0 }}>
-              N
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 1 }}>
-              o
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 2 }}>
-              m
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 3 }}>
-              e
-            </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 0 }}> C </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 1 }}> P </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 2 }}> F </FormSpanChar>
           </FormLabel>
-        </FormGroup>
+        </div>
 
-        <FormGroup className="wave-group">
-          <FormField
-            required
-            type="text"
-            className="input"
-            value={cpf}
-            onChange={handleCpfChange}
-          />
+        <div className={`${style.FormGroup} wave-group`}>
+          <FormField required type="text" className="input" value={cnh} onChange={handleCnhChange} />
           <FormSpanBar className="bar"></FormSpanBar>
           <FormLabel className="label">
-            <FormSpanChar className="label-char" style={{ "--index": 0 }}>
-              C
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 1 }}>
-              P
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 2 }}>
-              F
-            </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 0 }}> C </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 1 }}> N </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 2 }}> H </FormSpanChar>
           </FormLabel>
-        </FormGroup>
+        </div>
 
-        <FormGroup className="wave-group">
-          <FormField
-            required
-            type="text"
-            className="input"
-            value={cnh}
-            onChange={handleCnhChange}
-          />
+        <div className={`${style.FormGroup} wave-group`}>
+          <FormField required type="text" className="input" value={emailCorp} onChange={handleEmailChange} />
           <FormSpanBar className="bar"></FormSpanBar>
           <FormLabel className="label">
-            <FormSpanChar className="label-char" style={{ "--index": 0 }}>
-              C
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 1 }}>
-              N
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 2 }}>
-              H
-            </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 0 }}> E </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 1 }}> m </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 2 }}> a </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 3 }}> i </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 4 }}> l </FormSpanChar>
           </FormLabel>
-        </FormGroup>
+        </div>
 
-        <FormGroup className="wave-group">
-          <FormField
-            required
-            type="text"
-            className="input"
-            value={emailCorp}
-            onChange={handleEmailChange}
-          />
+        <div className={`${style.FormGroup} wave-group`}>
+          <FormField required type="text" className="input" value={confirmEmail} onChange={handleConfirmEmailChange} />
           <FormSpanBar className="bar"></FormSpanBar>
           <FormLabel className="label">
-            <FormSpanChar className="label-char" style={{ "--index": 0 }}>
-              E
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 1 }}>
-              m
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 2 }}>
-              a
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 3 }}>
-              i
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 4 }}>
-              l
-            </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 0 }}> C </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 1 }}> o </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 2 }}> n </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 3 }}> f </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 4 }}> i </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 5 }}> r </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 6 }}> m </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 7 }}> a </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 8 }}> r </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 9, marginLeft: 7 }} > E </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 10 }}> m </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 11 }}> a </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 13 }}> i </FormSpanChar>
+            <FormSpanChar className="label-char" style={{ "--index": 14 }}> l </FormSpanChar>
           </FormLabel>
-        </FormGroup>
+        </div>
 
-        <FormGroup className="wave-group">
-          <FormField
-            required
-            type="text"
-            className="input"
-            value={confirmEmail}
-            onChange={handleConfirmEmailChange}
-          />
-          <FormSpanBar className="bar"></FormSpanBar>
-          <FormLabel className="label">
-            <FormSpanChar className="label-char" style={{ "--index": 0 }}>
-              C
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 1 }}>
-              o
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 2 }}>
-              n
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 3 }}>
-              f
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 4 }}>
-              i
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 5 }}>
-              r
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 6 }}>
-              m
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 7 }}>
-              a
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 8 }}>
-              r
-            </FormSpanChar>
-            <FormSpanChar
-              className="label-char"
-              style={{ "--index": 9, marginLeft: 7 }}
-            >
-              E
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 10 }}>
-              m
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 11 }}>
-              a
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 13 }}>
-              i
-            </FormSpanChar>
-            <FormSpanChar className="label-char" style={{ "--index": 14 }}>
-              l
-            </FormSpanChar>
-          </FormLabel>
-        </FormGroup>
-
-        <FormGroup className="wave-group">
+        <div className={`${style.FormGroup} wave-group`}>
           <FormField
             required
             type="password"
@@ -279,9 +184,9 @@ export default function Page() {
               a
             </FormSpanChar>
           </FormLabel>
-        </FormGroup>
+        </div>
 
-        <FormGroup className="wave-group">
+        <div className={`${style.FormGroup} wave-group`}>
           <FormField
             required
             type="password"
@@ -337,7 +242,7 @@ export default function Page() {
               a
             </FormSpanChar>
           </FormLabel>
-        </FormGroup>
+        </div>
         <br />
         <Link href="/vehicle" style={{ display: "contents" }}>
           <ButtonRequest
@@ -348,7 +253,7 @@ export default function Page() {
             <p>Continuar</p>
           </ButtonRequest>
         </Link>
-      </Form>
+      </div>
     </div>
   );
 }
