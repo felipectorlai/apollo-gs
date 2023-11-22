@@ -106,6 +106,15 @@ export default function Page() {
             <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 1 } as any}> o </label>
             <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 2 } as any}> m </label> 
             <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 3 } as any}> e </label>
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 4, marginLeft: 7 } as any} > d </label>
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 5 } as any}> a </label>
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 6, marginLeft: 7 } as any} > E </label>
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 7 } as any}> m </label>
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 8 } as any}> p </label> 
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 9 } as any}> r </label>
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 10 } as any}> e </label> 
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 11 } as any}> s </label>
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 12 } as any}> a </label>
           </label>
         </div>
 
