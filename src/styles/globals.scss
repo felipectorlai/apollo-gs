@@ -13,3 +13,7 @@ body {
     @include themeLight.use-theme();
   }
 }
+
+body{
+  background-color: #212529;
+}
