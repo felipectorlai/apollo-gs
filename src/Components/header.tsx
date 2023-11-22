@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react';
+import "/src/styles/globals.scss"
 import style from '../styles/components/header.module.scss';
 import { IoMdMenu, IoMdHelpCircleOutline, IoIosSettings } from "react-icons/io";
 import { IoHome } from "react-icons/io5";

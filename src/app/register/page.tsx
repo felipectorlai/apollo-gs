@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import React, { useState, ChangeEvent } from "react";
+import style from "@/styles/Components/register.modulo.scss";
 
 export default function Page() {
   // #region const register client
@@ -12,7 +13,7 @@ export default function Page() {
   // #endregion
 
   // #region register account
-  const [login, setNamelogin] = useState("");
+  const [login, setlogin] = useState("");
   const [emailCorp, setEmailCorp] = useState("");
   const [confirmEmail, setConfirmEmail] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -69,20 +70,29 @@ export default function Page() {
 
       console.log("Server response:", responseClient.data);
 
-      // setName("");
-      // setCnpj("");
-      // setCnh("");
-      // setEmailCorp("");
-      // setConfirmEmail("");
-      // setPassword("");
-      // setConfirmPassword("");
+      setNameCorporateReason("");
+      setFantasyName("");
+      setCnpj("");
+      setContact("");
+      setRating("");
+
+      setlogin("");
+      setEmailCorp("");
+      setPassword("");
+      setDateStart("");
+
+      setStreet("");
+      setComplement("");
+      setNumber("");
+      setCity("");
+      setCep("");
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
 
   return (
-    <Rselector>
+    <div className={style.Rselector} >
       <DivIconHome style={{ height: "8%" }}>
         <IconPorto src="img/logo-portoseguro-blue.svg" alt="Logo" />
       </DivIconHome>
@@ -339,6 +349,6 @@ export default function Page() {
           </ButtonRequest>
         </Link>
       </Form>
-    </Rselector>
+    </div>
   );
 }
