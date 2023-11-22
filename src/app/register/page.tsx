@@ -30,7 +30,11 @@ export default function Page() {
   const [cep, setCep] = useState("");
   // #endregion
 
-  
+ 
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNameCorporateReason(e.target.value);
+  };
+
   const handleCpfChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newCnpj = event.target.value.replace(/\D/g, "");
 
@@ -95,13 +99,13 @@ export default function Page() {
     <div className={style.Rselector} >
       <div className={style.Form} onSubmit={handleSubmit}>
         <div className={`${style.FormGroup} wave-group`} style={{ marginTop: 0 }}>
-          <input required type="text" className={`${style.FormField} input`} value={nameCorporateReason} onChange={(e: React.FormEvent) => setNameCorporateReason(e.target.value)} />
+          <input required type="text" className={`${style.FormField} input`} value={nameCorporateReason} onChange={handleNameChange} />
           <span className={`${style.FormSpanBar} bar`}></span>
           <label className={`${style.FormLabel} label`}>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 0 }}> N </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 1 }}> o </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 2 }}> m </label> 
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 3 }}> e </label>
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 0 } as any}> N </label>
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 1 } as any}> o </label>
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 2 } as any}> m </label> 
+            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 3 } as any}> e </label>
           </label>
         </div>
 
