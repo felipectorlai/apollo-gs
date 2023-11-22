@@ -12,7 +12,7 @@ export default function Page() {
   const [rating, setRating] = useState("");
   // #endregion
 
-  // #region register account
+  // #region const register account
   const [login, setlogin] = useState("");
   const [emailCorp, setEmailCorp] = useState("");
   const [confirmEmail, setConfirmEmail] = useState('');
@@ -22,7 +22,7 @@ export default function Page() {
   const [dateStart, setDateStart] = useState("");
   // #endregion
 
-  // #region register address
+  // #region const register address
   const [street, setStreet] = useState("");
   const [number, setNumber] = useState("");
   const [complement, setComplement] = useState("");
