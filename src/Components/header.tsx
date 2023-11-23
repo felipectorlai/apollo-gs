@@ -1,11 +1,25 @@
 'use client'
 import { useState } from 'react';
 import style from '../styles/components/header.module.scss';
-import { IoMdMenu, IoMdHelpCircleOutline, IoIosSettings } from "react-icons/io";
+import { IoMdMenu, IoMdHelpCircle, IoIosSettings } from "react-icons/io";
 import { IoHome } from "react-icons/io5";
-import { CgProfile } from "react-icons/cg";
 import { ImExit } from "react-icons/im";
+import { IoPersonCircle } from "react-icons/io5";
 
+// Componente de Logo
+const Logo = () => {
+  return <img src="Logo.png" alt="Logo" className={style.logo} />;
+};
+
+// Componente de Login
+const Login = () => {
+  return (
+    <a href="#" className={`${style.linkStyle} nav-Link`}>
+      <IoPersonCircle className={style.icon}/>
+      Login
+    </a>
+  );
+};
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -57,7 +71,7 @@ const Header = () => {
               <br></br>
               <li className="nav-item">
               <a href="#" style={{color: 'blue'}} className={`${style.linkStyle} nav-Link`}>
-                  <CgProfile className={style.icon}/>
+                  <IoPersonCircle className={style.icon}/>
                   Perfil
                 </a>
               </li>
@@ -71,7 +85,7 @@ const Header = () => {
               <br></br>
               <li className="nav-item">
               <a href="#" style={{color: 'blue'}} className={`${style.linkStyle} nav-Link`}>
-                  <IoMdHelpCircleOutline  className={style.icon}/>
+                  <IoMdHelpCircle className={style.icon}/>
                   Ajuda
                 </a>
               </li>
