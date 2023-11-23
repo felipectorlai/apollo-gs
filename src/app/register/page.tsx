@@ -6,6 +6,7 @@ import Link from "next/link";
 
 export default function Page() {
   // #region const register client
+  const [clientId, setClientId] = useState<number | null>(null);
   const [nameCorporateReason, setNameCorporateReason] = useState("");
   const [fantasyName, setFantasyName] = useState("");
   const [cnpj, setCnpj] = useState("");
@@ -92,18 +93,18 @@ export default function Page() {
 
 
     const clientData = { nameCorporateReason, fantasyName, cnpj, contact, rating, establishmentType: selectedEstablishmentType, };
-    const accountData = { login, emailCorp, cnpj, password, dateStart};
-    const addressData = { street, number, complement, city, cep };
+    const accountData = { login, emailCorp, cnpj, password, dateStart, clientId};
+    const addressData = { street, number, complement, city, cep, clientId};
 
     try {
       const responseClient = await axios.post("http://localhost:8080/client", clientData);
-      const clientId = responseClient.data.id;
-
+      const RclientId = responseClient.data.id;
       //const responseAccount = await axios.post("http://localhost:8080/account", accountData);
-      //const clientId = responseAccount.data.id;
+      //const accountId = responseAccount.data.id;
       //const responseAddress = await axios.post("http://localhost:8080/address", addressData);
-      //const clientId = responseAddress.data.id;
+      //const addressId = responseAddress.data.id;
 
+      setClientId(RclientId);
       console.log("Server response:", responseClient.data);
 
       setNameCorporateReason("");
@@ -130,145 +131,153 @@ export default function Page() {
   return (
     <div className={style.Rselector} >
       <div className={style.Form} onSubmit={handleSubmit}>
-        <div className={style.formControl}>
-          <input type="text" value={nameCorporateReason} onChange={handleNameCorpChange} required/>
-          <label>
-            <span style={{ transitionDelay: '0ms' }}>U</span>
-            <span style={{ transitionDelay: '50ms' }}>s</span>
-            <span style={{ transitionDelay: '100ms' }}>e</span>
-            <span style={{ transitionDelay: '150ms' }}>r</span>
-            <span style={{ transitionDelay: '200ms' }}>n</span>
-            <span style={{ transitionDelay: '250ms' }}>a</span>
-            <span style={{ transitionDelay: '300ms' }}>m</span>
-            <span style={{ transitionDelay: '350ms' }}>e</span>
-          </label>
+        <div className={style.registerClient}>
+          <div className={style.formControl}>
+            <input type="text" value={nameCorporateReason} onChange={handleNameCorpChange} required/>
+            <label>
+              <span style={{ transitionDelay: '0ms' }}>U</span>
+              <span style={{ transitionDelay: '50ms' }}>s</span>
+              <span style={{ transitionDelay: '100ms' }}>e</span>
+              <span style={{ transitionDelay: '150ms' }}>r</span>
+              <span style={{ transitionDelay: '200ms' }}>n</span>
+              <span style={{ transitionDelay: '250ms' }}>a</span>
+              <span style={{ transitionDelay: '300ms' }}>m</span>
+              <span style={{ transitionDelay: '350ms' }}>e</span>
+            </label>
+          </div>
+
+          <div className={style.formControl}>
+            <input type="text" value={fantasyName} onChange={handleNamefantChange} required/>
+            <label>
+              <span style={{ transitionDelay: '0ms' }}>U</span>
+              <span style={{ transitionDelay: '50ms' }}>s</span>
+              <span style={{ transitionDelay: '100ms' }}>e</span>
+              <span style={{ transitionDelay: '150ms' }}>r</span>
+              <span style={{ transitionDelay: '200ms' }}>n</span>
+              <span style={{ transitionDelay: '250ms' }}>a</span>
+              <span style={{ transitionDelay: '300ms' }}>m</span>
+              <span style={{ transitionDelay: '350ms' }}>e</span>
+            </label>
+          </div>
+
+          <div className={style.formControl}>
+            <input type="text" value={cnpj} onChange={handleCnpjChange} required/>
+            <label>
+              <span style={{ transitionDelay: '0ms' }}>C</span>
+              <span style={{ transitionDelay: '50ms' }}>n</span>
+              <span style={{ transitionDelay: '100ms' }}>p</span>
+              <span style={{ transitionDelay: '150ms' }}>j</span>
+            </label>
+          </div>
+
+          <div className={style.formControl}>
+            <input type="text" value={contact} onChange={handleContactChange} required/>
+            <label>
+              <span style={{ transitionDelay: '0ms' }}>C</span>
+              <span style={{ transitionDelay: '50ms' }}>o</span>
+              <span style={{ transitionDelay: '100ms' }}>n</span>
+              <span style={{ transitionDelay: '150ms' }}>t</span>
+              <span style={{ transitionDelay: '200ms' }}>a</span>
+              <span style={{ transitionDelay: '250ms' }}>c</span>
+              <span style={{ transitionDelay: '300ms' }}>t</span>
+            </label>
+          </div>
+
+          <div className={style.formControl}>
+            <input type="text" value={rating} onChange={handleRatingChange} required/>
+            <label>
+              <span style={{ transitionDelay: '0ms' }}>R</span>
+              <span style={{ transitionDelay: '50ms' }}>a</span>
+              <span style={{ transitionDelay: '100ms' }}>t</span>
+              <span style={{ transitionDelay: '150ms' }}>i</span>
+              <span style={{ transitionDelay: '200ms' }}>n</span>
+              <span style={{ transitionDelay: '250ms' }}>g</span>
+            </label>
+          </div>
+
+          <select className={style.comboBoxClient} value={selectedEstablishmentType} onChange={(e) => setSelectedEstablishmentType(e.target.value)}>
+            {establishmentTypes.map((establishmentType, index) => (
+                <option key={index} value={establishmentType}>{establishmentType}</option>
+            ))}
+          </select>
         </div>
 
-        <div className={style.formControl}>
-          <input type="text" value={fantasyName} onChange={handleNamefantChange} required/>
-          <label>
-            <span style={{ transitionDelay: '0ms' }}>U</span>
-            <span style={{ transitionDelay: '50ms' }}>s</span>
-            <span style={{ transitionDelay: '100ms' }}>e</span>
-            <span style={{ transitionDelay: '150ms' }}>r</span>
-            <span style={{ transitionDelay: '200ms' }}>n</span>
-            <span style={{ transitionDelay: '250ms' }}>a</span>
-            <span style={{ transitionDelay: '300ms' }}>m</span>
-            <span style={{ transitionDelay: '350ms' }}>e</span>
-          </label>
+
+
+
+        <div className={style.registerClient}>
+          {/*<div className={`${style.FormGroup} wave-group`}>
+            <input required type="text" className={`${style.FormField} input`} value={emailCorp} onChange={handleEmailChange} />
+            <span className={`${style.FormSpanBar} bar`}></span>
+            <label className={`${style.FormLabel} label`}>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 0 } as any}> E </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 1 } as any}> m </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 2 } as any}> a </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 3 } as any}> i </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 4 } as any}> l </label>
+            </label>
+          </div>
+
+          <div className={`${style.FormGroup} wave-group`}>
+            <input required type="text" className={`${style.FormField} input`} value={confirmEmail} onChange={handleConfirmEmailChange} />
+            <span className={`${style.FormSpanBar} bar`}></span>
+            <label className={`${style.FormLabel} label`}>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 0 } as any}> C </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 1 } as any}> o </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 2 } as any}> n </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 3 } as any}> f </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 4 } as any}> i </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 5 } as any}> r </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 6 } as any}> m </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 7 } as any}> a </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 8 } as any}> r </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 9, marginLeft: 7 } as any} > E </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 10 } as any}> m </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 11 } as any}> a </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 13 } as any}> i </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 14 } as any}> l </label>
+            </label>
+          </div>
+
+          <div className={`${style.FormGroup} wave-group`}>
+            <input required type="password" className={`${style.FormField} input`} value={password} onChange={(e) => setPassword(e.target.value)} />
+            <span className={`${style.FormSpanBar} bar`}></span>
+            <label className={`${style.FormLabel} label`}>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 0 } as any}> S </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 1 } as any}> e </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 2 } as any}> n </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 3 } as any}> h </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 4 } as any}> a </label>
+            </label>
+          </div>
+
+          <div className={`${style.FormGroup} wave-group`}>
+            <FormField required type="password" className="input" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+            <span className={`${style.FormSpanBar} bar`}></span>
+            <label className={`${style.FormLabel} label`}>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 0 } as any}> C </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 1 } as any}> o </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 2 } as any}> n </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 3 } as any}> f </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 4 } as any}> i </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 5 } as any}> r </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 6 } as any}> m </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 7 } as any}> a </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 8 } as any}> r </label>
+              <label className={`${style.FormSpanChar} label-char`}  style={{ "--index": 9, marginLeft: 7 } as any} > S </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 10 } as any}> e </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 11 } as any}> n </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 12 } as any}> h </label>
+              <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 13 } as any}> a </label>
+            </label>
+          </div>*/}
         </div>
 
-        <div className={style.formControl}>
-          <input type="text" value={cnpj} onChange={handleCnpjChange} required/>
-          <label>
-            <span style={{ transitionDelay: '0ms' }}>C</span>
-            <span style={{ transitionDelay: '50ms' }}>n</span>
-            <span style={{ transitionDelay: '100ms' }}>p</span>
-            <span style={{ transitionDelay: '150ms' }}>j</span>
-          </label>
+
+        <div className={style.registerAddress}>
         </div>
-
-        <div className={style.formControl}>
-          <input type="text" value={contact} onChange={handleContactChange} required/>
-          <label>
-            <span style={{ transitionDelay: '0ms' }}>C</span>
-            <span style={{ transitionDelay: '50ms' }}>o</span>
-            <span style={{ transitionDelay: '100ms' }}>n</span>
-            <span style={{ transitionDelay: '150ms' }}>t</span>
-            <span style={{ transitionDelay: '200ms' }}>a</span>
-            <span style={{ transitionDelay: '250ms' }}>c</span>
-            <span style={{ transitionDelay: '300ms' }}>t</span>
-          </label>
-        </div>
-
-        <div className={style.formControl}>
-          <input type="text" value={rating} onChange={handleRatingChange} required/>
-          <label>
-            <span style={{ transitionDelay: '0ms' }}>R</span>
-            <span style={{ transitionDelay: '50ms' }}>a</span>
-            <span style={{ transitionDelay: '100ms' }}>t</span>
-            <span style={{ transitionDelay: '150ms' }}>i</span>
-            <span style={{ transitionDelay: '200ms' }}>n</span>
-            <span style={{ transitionDelay: '250ms' }}>g</span>
-          </label>
-        </div>
-
-        <select className={style.comboBoxClient} value={selectedEstablishmentType} onChange={(e) => setSelectedEstablishmentType(e.target.value)}>
-          {establishmentTypes.map((establishmentType, index) => (
-              <option key={index} value={establishmentType}>{establishmentType}</option>
-          ))}
-        </select>
-
-
-
-
-        {/*<div className={`${style.FormGroup} wave-group`}>
-          <input required type="text" className={`${style.FormField} input`} value={emailCorp} onChange={handleEmailChange} />
-          <span className={`${style.FormSpanBar} bar`}></span>
-          <label className={`${style.FormLabel} label`}>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 0 } as any}> E </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 1 } as any}> m </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 2 } as any}> a </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 3 } as any}> i </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 4 } as any}> l </label>
-          </label>
-        </div>
-
-        <div className={`${style.FormGroup} wave-group`}>
-          <input required type="text" className={`${style.FormField} input`} value={confirmEmail} onChange={handleConfirmEmailChange} />
-          <span className={`${style.FormSpanBar} bar`}></span>
-          <label className={`${style.FormLabel} label`}>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 0 } as any}> C </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 1 } as any}> o </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 2 } as any}> n </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 3 } as any}> f </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 4 } as any}> i </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 5 } as any}> r </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 6 } as any}> m </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 7 } as any}> a </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 8 } as any}> r </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 9, marginLeft: 7 } as any} > E </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 10 } as any}> m </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 11 } as any}> a </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 13 } as any}> i </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 14 } as any}> l </label>
-          </label>
-        </div>
-
-        <div className={`${style.FormGroup} wave-group`}>
-          <input required type="password" className={`${style.FormField} input`} value={password} onChange={(e) => setPassword(e.target.value)} />
-          <span className={`${style.FormSpanBar} bar`}></span>
-          <label className={`${style.FormLabel} label`}>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 0 } as any}> S </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 1 } as any}> e </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 2 } as any}> n </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 3 } as any}> h </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 4 } as any}> a </label>
-          </label>
-        </div>
-
-        <div className={`${style.FormGroup} wave-group`}>
-          <FormField required type="password" className="input" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-          <span className={`${style.FormSpanBar} bar`}></span>
-          <label className={`${style.FormLabel} label`}>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 0 } as any}> C </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 1 } as any}> o </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 2 } as any}> n </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 3 } as any}> f </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 4 } as any}> i </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 5 } as any}> r </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 6 } as any}> m </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 7 } as any}> a </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 8 } as any}> r </label>
-            <label className={`${style.FormSpanChar} label-char`}  style={{ "--index": 9, marginLeft: 7 } as any} > S </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 10 } as any}> e </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 11 } as any}> n </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 12 } as any}> h </label>
-            <label className={`${style.FormSpanChar} label-char`} style={{ "--index": 13 } as any}> a </label>
-          </label>
-        </div>*/}
         <br />
-        <button>Continuar</button>
+        <button className={style.ButtonCont}>Continuar</button>
         <Link href="/" style={{ display: "contents" }}>
           <button className={style.ButtonRequest} onClick={handleSubmit} type="submit" style={{ transform: "translateY(36px)" }} >
             <p>Registrar</p>
