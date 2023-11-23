@@ -1,8 +1,10 @@
 'use client'
 import React, { useState } from 'react';
 import Header from '@/Components/header'
-import '../styles/globals.scss'
+import '@/styles/globals.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ToggleMode from '@/Components/ToggleMode';
+import { CgDarkMode } from 'react-icons/cg';
 
 export default function RootLayout({
   children,
@@ -18,8 +20,8 @@ export default function RootLayout({
   
   return (
     <html lang="pt-br">
-      <body>
-        {/* <ToggleMode onClick={toggleTheme}/> */}
+      <body style={{backgroundColor: "#212529"}}>
+        {/* {<ToggleMode onClick={toggleTheme}/>} */}
         <Header />
         {children}
       </body>

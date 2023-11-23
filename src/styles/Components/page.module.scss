@@ -1,0 +1,39 @@
+$primary: #212529;
+$secondary: #f7f7f7;
+
+// Componentes
+.container {
+  width: 300px;
+  margin: 0 auto;
+  background-color: $primary;
+  padding: 20px;
+}
+
+.form {
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-family: Roboto, sans-serif, Montserrat;
+  font-size: 16px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: $secondary;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  background-color: $secondary;
+  color: $primary;
+  border: none;
+  cursor: grab;
+  font-family: Roboto, sans-serif, Montserrat;
+  font-size: 16px;
+}

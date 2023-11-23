@@ -1,5 +1,5 @@
 'use client'
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import React, { useState } from 'react';
 import { useRouter } from "next/navigation";
 import style from '../styles/components/account.module.scss';
@@ -29,15 +29,16 @@ export default function Account() {
           console.log(response.data.situation);
 
           //router.push('/');
-        } else {
-          router.push('/');
+        } else console.log(response.data);
+      }catch (err: any) {
+        if (axios.isAxiosError(err)) {
+          const axiosError = err as AxiosError;
+  
+          if (axiosError.response && axiosError.response.status === 404) router.push('/register');
+          else console.error('Erro ao chamar a API:', axiosError);
         }
-      } catch (err) {
-        console.error('Erro ao chamar a API:', err);
       }
-    } else {
-      alert('Por favor, insira um CNPJ válido com 14 dígitos.');
-    }
+    } else alert('Por favor, insira um CNPJ válido com 14 dígitos.');
   };
 
   const handleSubmitButtonClick = async () => {
