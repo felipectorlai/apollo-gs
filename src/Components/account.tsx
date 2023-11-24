@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import { useRouter } from "next/navigation";
 import style from '../styles/components/account.module.scss';
 
-export default function Account() {
-  const router = useRouter();
+  export default function Account() {
+    const router = useRouter();
   const [cnpj, setCnpj] = useState('');
   const [isButtonActive, setIsButtonActive] = useState(false);
 
@@ -28,7 +28,7 @@ export default function Account() {
           console.log(response.data.id);
           console.log(response.data.situation);
 
-          //router.push('/');
+          router.push('/login');
         } else console.log(response.data);
       }catch (err: any) {
         if (axios.isAxiosError(err)) {

@@ -1,49 +1,77 @@
-"use client"
-import React, { useState } from "react";
+"use client";
+import axios, {AxiosError} from "axios";
+import React, {useEffect, useState} from "react";
+import style from "@/styles/Components/login.module.scss";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const router = useRouter();
+  const [login, setlogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [isButtonActive, setIsButtonActive] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // autenticação do usuário
+  const checkButtonActivation = () => {
+    setIsButtonActive(login.length > 0 && password.length > 0);
   };
 
+  useEffect(() => {
+    setIsButtonActive(login.length > 0 && password.length > 0);
+  }, [login, password]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(`http://localhost:8080/account/login/${login}`);
+      console.log(response.data);
+
+      if (response.data && Object.keys(response.data).length > 0){
+        if (response.data.password == password) router.push('/home');
+        else alert("Senha incorreta")
+      }
+
+    } catch (err: any) {
+      if (axios.isAxiosError(err)) {
+        const axiosError = err as AxiosError;
+        if (axiosError.response && axiosError.response.status === 404) alert('Conta não encontrada.')
+      }
+    }
+  };
+
+  useEffect(() => {
+    checkButtonActivation();
+  }, [login, password]);
+
   return (
-    <div className="container">
+    <div className={style.container}>
+      <form className={style.Form} onSubmit={handleSubmit}>
+        <div className={style.formControl}>
+          <input type="text" value={login} onChange={(e) => setlogin(e.target.value)} required/>
+          <label>
+            <span style={{ transitionDelay: '0ms' }}>U</span>
+            <span style={{ transitionDelay: '50ms' }}>s</span>
+            <span style={{ transitionDelay: '100ms' }}>e</span>
+            <span style={{ transitionDelay: '150ms' }}>r</span>
+            <span style={{ transitionDelay: '200ms' }}>n</span>
+            <span style={{ transitionDelay: '250ms' }}>a</span>
+            <span style={{ transitionDelay: '300ms' }}>m</span>
+            <span style={{ transitionDelay: '350ms' }}>e</span>
+          </label>
+        </div>
 
-      
-<form
- 
-    onSubmit={handleSubmit}>
-        
-        <input
-            
-        type="email"       
-        placeholder="E-mail"      
-        value={email}
-            
-        onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
+        <div className={style.formControl}>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+          <label>
+            <span style={{ transitionDelay: '0ms' }}>S</span>
+            <span style={{ transitionDelay: '50ms' }}>e</span>
+            <span style={{ transitionDelay: '100ms' }}>n</span>
+            <span style={{ transitionDelay: '150ms' }}>h</span>
+            <span style={{ transitionDelay: '200ms' }}>a</span>
+          </label>
+        </div>
 
-          
-        type="password"   
-        placeholder="Senha"    
-        value={senha}
-
-            
-    onChange={(e) => setSenha(e.target.value)}
-            />
-                <button
-        
-        type="submit">Entrar</button>
-    
-</form>
-
-</div>
+        <button className={style.ButtonRequest} type="submit" disabled={!isButtonActive}>Entrar</button>
+      </form>
+    </div>
   );
 };
 

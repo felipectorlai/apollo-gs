@@ -1,11 +1,12 @@
 'use client'
 import { useState } from 'react';
 import style from '../styles/components/header.module.scss';
-import { IoMdMenu, IoMdHelpCircleOutline, IoIosSettings } from "react-icons/io";
+import { IoMdMenu, IoMdHelpCircle, IoIosSettings } from "react-icons/io";
 import { IoHome } from "react-icons/io5";
-import { CgProfile } from "react-icons/cg";
 import { ImExit } from "react-icons/im";
-
+import { IoPersonCircle } from "react-icons/io5";
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -16,17 +17,20 @@ const Header = () => {
   
     return (
       <nav className={style.navStyle}>
-        <button
+        <button 
           className="navbar-toggler"
+          style={{position: 'absolute', left: 5}}
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasNavbar"
           aria-controls="offcanvasNavbar"
-          onClick={toggleMenu}
-        >
-          <IoMdMenu />
+          onClick={toggleMenu}>
+          <IoMdMenu style={{fontSize: 20}}/>
         </button>
-  
+        <div className={style.DivImage}>
+          <Image src={"/img/logoApollo.svg"} width={100} height={100} alt='logo'/>
+        </div>
+        
         <div
           className={`offcanvas offcanvas-start ${showMenu ? 'show' : ''}`}
           tabIndex={-1}
@@ -57,7 +61,7 @@ const Header = () => {
               <br></br>
               <li className="nav-item">
               <a href="#" style={{color: 'blue'}} className={`${style.linkStyle} nav-Link`}>
-                  <CgProfile className={style.icon}/>
+                  <IoPersonCircle className={style.icon}/>
                   Perfil
                 </a>
               </li>
@@ -71,7 +75,7 @@ const Header = () => {
               <br></br>
               <li className="nav-item">
               <a href="#" style={{color: 'blue'}} className={`${style.linkStyle} nav-Link`}>
-                  <IoMdHelpCircleOutline  className={style.icon}/>
+                  <IoMdHelpCircle className={style.icon}/>
                   Ajuda
                 </a>
               </li>
