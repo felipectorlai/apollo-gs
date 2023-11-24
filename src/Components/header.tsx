@@ -9,6 +9,20 @@ import { AiOutlineClose } from "react-icons/ai";
 import Image from 'next/image';
 import Link from 'next/link';
 
+// Componente de Logo
+const Logo = () => {
+  return <img src="Logo.png" alt="Logo" className={style.logo} />;
+};
+
+// Componente de Login
+const Login = () => {
+  return (
+    <a href="#" className={`${style.linkStyle} nav-Link`}>
+      <IoPersonCircle className={style.icon}/>
+      Login
+    </a>
+  );
+};
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -65,6 +79,10 @@ const Header = () => {
               <li className="nav-item" style={{borderBottom: '1.5px solid #cccccc', paddingBottom: '15px'}}>
               <a href="#" style={{color: '#6495ed', textDecoration: 'none'}} className={`${style.linkStyle} nav-Link`}>
                   <IoPersonCircle className={style.icon} style={{color: '#6495ed'}}/>
+              <li className="nav-item">
+              <a href="#" style={{color: 'blue'}} className={`${style.linkStyle} nav-Link`}>
+                  <IoPersonCircle className={style.icon}/>
+
                   Perfil
                 </a>
               </li>
@@ -78,6 +96,10 @@ const Header = () => {
               <br></br>
               <li className="nav-item" style={{borderBottom: '1.5px solid #cccccc', paddingBottom: '15px'}}>
               <a href="#" style={{color: '#6495ed', textDecoration: 'none'}} className={`${style.linkStyle} nav-Link`}>
+
+              <li className="nav-item">
+              <a href="#" style={{color: 'blue'}} className={`${style.linkStyle} nav-Link`}>
+
                   <IoMdHelpCircle className={style.icon}/>
                   Ajuda
                 </a>
@@ -89,11 +111,9 @@ const Header = () => {
                   Sair
                 </a>
               </li>
-              {/* Adicione mais itens do menu conforme necessário */}
             </ul>
           </div>
         </div>
-        {/**/}
       </nav>
     );
   };
