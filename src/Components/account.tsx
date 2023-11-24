@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import { useRouter } from "next/navigation";
 import style from '../styles/components/account.module.scss';
 
-export default function Account() {
-  const router = useRouter();
+  export default function Account() {
+    const router = useRouter();
   const [cnpj, setCnpj] = useState('');
   const [isButtonActive, setIsButtonActive] = useState(false);
 
@@ -23,13 +23,8 @@ export default function Account() {
     if (cnpj.length === 14) {
       try {
         const response = await axios.get(`http://localhost:8080/client/cnpj/${cnpj}`);
-        if (response.data && Object.keys(response.data).length > 0) {
-          console.log(response.data);
-          console.log(response.data.id);
-          console.log(response.data.situation);
-
-          //router.push('/');
-        } else console.log(response.data);
+        if (response.data && Object.keys(response.data).length > 0) router.push('/login');
+        else console.log(response.data);
       }catch (err: any) {
         if (axios.isAxiosError(err)) {
           const axiosError = err as AxiosError;
@@ -42,9 +37,7 @@ export default function Account() {
   };
 
   const handleSubmitButtonClick = async () => {
-    if (isButtonActive) {
-      handleFormSubmit();
-    }
+    if (isButtonActive) handleFormSubmit();
   };
   
   return (

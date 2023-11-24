@@ -4,6 +4,10 @@
     align-items: center;
     transform: translateY(22px);
 
+    .DisplayNone{
+        display: none;
+    }
+
     .formControl{
         position: relative;
         margin: 20px 0 40px;
@@ -55,7 +59,7 @@
         background-color: transparent;
 
         option{
-            background-color: blueviolet;
+            background-color: #044386;
             color: black;
 
             &:focus{
@@ -96,7 +100,7 @@
         }
 
         &:active, &:active .iconA
-        &:hover, &:hover .iconA,{
+        &:hover, &:hover .iconA{
             transition: transform 0.3s ease;
         }
 
