@@ -23,13 +23,8 @@ import style from '../styles/components/account.module.scss';
     if (cnpj.length === 14) {
       try {
         const response = await axios.get(`http://localhost:8080/client/cnpj/${cnpj}`);
-        if (response.data && Object.keys(response.data).length > 0) {
-          console.log(response.data);
-          console.log(response.data.id);
-          console.log(response.data.situation);
-
-          router.push('/login');
-        } else console.log(response.data);
+        if (response.data && Object.keys(response.data).length > 0) router.push('/login');
+        else console.log(response.data);
       }catch (err: any) {
         if (axios.isAxiosError(err)) {
           const axiosError = err as AxiosError;
@@ -42,9 +37,7 @@ import style from '../styles/components/account.module.scss';
   };
 
   const handleSubmitButtonClick = async () => {
-    if (isButtonActive) {
-      handleFormSubmit();
-    }
+    if (isButtonActive) handleFormSubmit();
   };
   
   return (

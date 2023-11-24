@@ -22,7 +22,6 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.get(`http://localhost:8080/account/login/${login}`);
-      console.log(response.data);
 
       if (response.data && Object.keys(response.data).length > 0){
         if (response.data.password == password) router.push('/home');
