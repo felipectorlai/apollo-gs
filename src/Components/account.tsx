@@ -22,7 +22,8 @@ import style from '../styles/components/account.module.scss';
   const handleFormSubmit = async () => {
     if (cnpj.length === 14) {
       try {
-        const response = await axios.get(`http://localhost:8080/client/cnpj/${cnpj}`);
+       // const response = await axios.get(`http://localhost:8080/client/cnpj/${cnpj}`);
+        const response = await axios.get(`https://api-apollo.onrender.com/client/cnpj/${cnpj}`);
         if (response.data && Object.keys(response.data).length > 0) router.push('/login');
         else console.log(response.data);
       }catch (err: any) {
