@@ -126,16 +126,16 @@ export default function Page() {
     }
 
     try {
-     // const responseClient = await axios.post("http://localhost:8080/client", clientData);
-        const responseClient = await axios.post("https://api-apollo.onrender.com/client", clientData);
+      // const responseClient = await axios.post("http://localhost:8080/client", clientData);
+      const responseClient = await axios.post("https://api-apollo.onrender.com/client", clientData);
       const RclientId = responseClient.data.id;
 
-     // const responseAccount = await axios.post("http://localhost:8080/account", accountData);
-        const responseAccount = await axios.post("https://api-apollo.onrender.com/account", accountData);
+      // const responseAccount = await axios.post("http://localhost:8080/account", accountData);
+      const responseAccount = await axios.post("https://api-apollo.onrender.com/account", accountData);
       const accountId = responseAccount.data.id;
 
-     // const responseAddress = await axios.post("http://localhost:8080/address", addressData);
-        const responseAddress = await axios.post("https://api-apollo.onrender.com/address", addressData);
+      // const responseAddress = await axios.post("http://localhost:8080/address", addressData);
+      const responseAddress = await axios.post("https://api-apollo.onrender.com/address", addressData);
       const addressId = responseAddress.data.id;
 
       setClientId(RclientId);
