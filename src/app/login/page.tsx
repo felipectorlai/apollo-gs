@@ -21,9 +21,8 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-    //  const response = await axios.get(`http://localhost:8080/account/login/${login}`);
-  
-const response = await axios.get(`https://api-apollo.onrender.com/account/login/${login}`);
+    // const response = await axios.get(`http://localhost:8080/account/login/${login}`); 
+    const response = await axios.get(`https://api-apollo.onrender.com/account/login/${login}`);
 
       if (response.data && Object.keys(response.data).length > 0){
         if (response.data.password == password) router.push('/home');
